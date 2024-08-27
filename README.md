@@ -1,0 +1,1 @@
+A telephone number validator is a tool or program used to verify whether a given phone number is formatted correctly and potentially valid. Validators can be designed to check for different formats depending on the country and type of phone number (e.g., mobile, landline).
