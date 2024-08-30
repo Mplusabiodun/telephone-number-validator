@@ -7,7 +7,7 @@ outputDiv.style.visibility = "hidden";
 function palindromeChecker() {
   if (inputtedNum.value === "") {
     error();
-    output.textContent = "Please enter a valid number";
+    output.textContent = "Please provide a phone number";
   } else if (inputtedNum.value < 0) {
     error();
     output.textContent = "Please enter a number greater than or equal to 1";

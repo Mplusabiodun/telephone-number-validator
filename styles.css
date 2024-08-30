@@ -70,9 +70,9 @@ form p {
 }
 .button_div {
   display: flex;
-  /* justify-content: space-between; */
 }
-.convert-btn {
+#check-btn,
+#clear-btn {
   cursor: pointer;
   width: 73%;
   height: 40px;
@@ -83,7 +83,7 @@ form p {
   font-size: 22px;
   letter-spacing: 1px;
 }
-.btn2 {
+#clear-btn {
   margin-left: 10px;
 }
 
@@ -100,7 +100,8 @@ form p {
   .button_div {
     margin-top: 1rem;
   }
-  .convert-btn {
+  #check-btn,
+  #clear-btn {
     height: 45px;
   }
 }
