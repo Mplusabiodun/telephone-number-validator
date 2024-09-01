@@ -3,7 +3,32 @@ let output = document.getElementById("results-div");
 const check_btn = document.getElementById("check-btn");
 const clear_btn = document.getElementById("clear-btn");
 
-function telephoneCheck() {}
+function telephoneCheck() {
+  // Remove all non-digit characters
+  let cleaned = inputtedNum.value.replace(/\D/g, "");
+  if (cleaned === "") {
+    return alert("Please provide a phone number");
+  }
+  // Check if the cleaned string has a length of 10 or 11
+  else if (
+    (cleaned.length !== 10 && cleaned.length !== 11) ||
+    !/^\d+$/.test(cleaned)
+  ) {
+    output.textContent = `Invalid US number: ${inputtedNum.value}`;
+    // return false;
+  }
+  // Check if the cleaned string starts with 1 (optional)
+  else if (cleaned.length === 11 && cleaned[0] !== "1") {
+    output.textContent = `valid US number: ${inputtedNum.value}`;
+  }
+  // Check if the cleaned string contains only digits
+  // else if (!/^\d+$/.test(cleaned)) {
+  //   output.textContent = `Invalid US number: ${inputtedNum}`;
+  // }
+  else {
+    output.textContent = `valid US number: ${inputtedNum.value}`;
+  }
+}
 
 // function clearOutput() {
 //   inputtedNum.value = "";
