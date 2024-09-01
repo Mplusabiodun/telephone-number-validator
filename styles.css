@@ -71,8 +71,8 @@ form p {
   display: block;
   font-size: 1.4rem;
   color: #0a0a23;
-  width: 70%;
-  height: 30px;
+  width: 80%;
+  height: 40px;
   padding: 7px 7px;
   border-radius: 5px;
   margin: 0 auto;
@@ -102,7 +102,7 @@ form p {
   border: 2px solid #fff;
   padding: 0.5rem 1.2rem;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 500;
   letter-spacing: 1px;
 }
 #clear-btn {
