@@ -6,64 +6,43 @@ const clear_btn = document.getElementById("clear-btn");
 function telephoneCheck() {
   // Remove all non-digit characters
   let cleaned = inputtedNum.value.replace(/\D/g, "");
+  // let cleaned = inputtedNum.value.replace(/[^0-9\s]/g, "");
   if (cleaned === "") {
     return alert("Please provide a phone number");
   }
-  // Check if the cleaned string has a length of 10 or 11
+  // Check if the cleaned string, has a length of 10 or 11 or contains only digits or correctParentheses
   else if (
     (cleaned.length !== 10 && cleaned.length !== 11) ||
-    !/^\d+$/.test(cleaned)
+    !/^\d+$/.test(cleaned) ||
+    (cleaned.includes("(") && !/^\(\d{3}\)\s\d{3}-\d{4}$/.test(cleaned)) // /^\([0-9]{3}\)$/
   ) {
     output.textContent = `Invalid US number: ${inputtedNum.value}`;
-    // return false;
   }
-  // Check if the cleaned string starts with 1 (optional)
-  else if (cleaned.length === 11 && cleaned[0] !== "1") {
+  // Check if the cleaned string starts with 1
+  else if (
+    (cleaned.length === 11 && cleaned[0] !== "1" && /(\([0-9]{3}\))*/) ||
+    !cleaned.includes(" ") ||
+    cleaned.includes("-")
+    // || /^\([0-9]{3}\)$/
+  ) {
+    output.textContent = `valid US number: ${inputtedNum.value}`;
+  } else {
     output.textContent = `valid US number: ${inputtedNum.value}`;
   }
-  // Check if the cleaned string contains only digits
-  // else if (!/^\d+$/.test(cleaned)) {
-  //   output.textContent = `Invalid US number: ${inputtedNum}`;
+
+  // if (str.includes('(') && !/^\(\d{3}\)\s\d{3}-\d{4}$/.test(str)) {
+  //   return false;
   // }
-  else {
-    output.textContent = `valid US number: ${inputtedNum.value}`;
-  }
+  // if (str.includes('-') && !/^\d{3}-\d{3}-\d{4}$/.test(str)) {
+  //   return false;
+  // }
 }
 
-// function clearOutput() {
-//   inputtedNum.value = "";
-//   output.textContent = "";
-// }
+function clearOutput() {
+  inputtedNum.value = "";
+  output.textContent = "";
+}
 check_btn.addEventListener("click", (event) => event.preventDefault());
 clear_btn.addEventListener("click", (event) => event.preventDefault());
 check_btn.addEventListener("click", telephoneCheck);
 clear_btn.addEventListener("click", clearOutput);
-
-// function telephoneCheck(str) {
-//   // Remove all non-digit characters
-//   let cleaned = str.replace(/\D/g, '');
-
-//   // Check if the cleaned string has a length of 10 or 11
-//   if (cleaned.length !== 10 && cleaned.length !== 11) {
-//     return false;
-//   }
-
-//   // Check if the cleaned string starts with 1 (optional)
-//   if (cleaned.length === 11 && cleaned[0] !== '1') {
-//     return false;
-//   }
-
-//   // Check if the cleaned string contains only digits
-//   if (!/^\d+$/.test(cleaned)) {
-//     return false;
-//   }
-
-//   // If all checks pass, return true
-//   return true;
-// }
-
-// console.log(telephoneCheck("555-555-5555")); // true
-// console.log(telephoneCheck("1 555 555 5555")); // true
-// console.log(telephoneCheck("5555555555")); // true
-// console.log(telephoneCheck("555-555-555")); // false
-// console.log(telephoneCheck("555/555/5555")); // false
